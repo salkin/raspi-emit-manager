@@ -4,5 +4,5 @@ Description=Ser2net server for for connecting EMIT online stamping module
 [Service]
 ExecStartPre=
 Environment=DEVICE=/dev/ttyUSB0
-ExecStart=/usr/bin/docker run --rm nwik/rpi-ser2net /start.sh
+ExecStart=/usr/bin/docker run --rm -p 32000:32000 --device=${DEVICE} nwik/rpi-ser2net /start.sh
 

@@ -1,4 +1,5 @@
 #!/bin/sh
 
-sed -i -e s.{{DEVICE}}.${DEVICE}. /etc/ser2net.conf
-ser2net -n 
+DEVICE=${DEVICE}
+socat tcp-l:32000,reuseaddr,fork file:${DEVICE},waitlock=${DEVICE}.lock
+
